@@ -7,11 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Navbar />
+          {/* <Navbar /> */}
         </header>
         <div className="App-body">
-          <Route exact path="/" component={PostsContainer} />
-          <Route exact path="/favorites" component={FavoritesContainer} />
+          {/* <Route exact path="/" component={PostsContainer} />
+          <Route exact path="/favorites" component={FavoritesContainer} /> */}
         </div>
       </div>
     );
