@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import Posts from '../components/Posts';
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { fetchPosts } from '../actions/postActions';
 
 class PostsContainer extends Component {
 
-  state = {
-    posts: []
-  }
-
-  fetchPosts = () => {
-    fetch('https://www.reddit.com/r/analog/top/.json')
-      .then(response => response.json())
-      .then(discussions => console.log(discussions))
-  }
-
   componentDidMount() {
-    this.fetchPosts()
+    this.props.fetchPosts()
   }
 
   render() {
     return (
       <div>
-        {this.state.posts.length > 0 ? <Posts posts={this.state.posts} /> : null}
+        {this.props.posts.length > 0 ? <Posts posts={this.props.posts} /> : null}
       </div>
     )
   }
@@ -36,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts())
 })
 
-export default PostsContainer;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostsContainer));

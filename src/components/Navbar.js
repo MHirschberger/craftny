@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-class Navbar extends Component {
+const link = {
+  width: '100px',
+  padding: '12px',
+  margin: '0 6px 6px',
+  background: '#191970',
+  textDecoration: '#191970',
+  color: 'black',
+}
 
+const Navbar = props => 
 
-  render(){
-
-    const link = {
-      width: '100px',
-      padding: '12px',
-      margin: '0 6px 6px',
-      background: '#191970',
-      textDecoration: '#191970',
-      color: 'black',
-    }
-
-    return (
-      <div>
+  <div>
       <NavLink
         className='navbar'
         to="/"
@@ -35,9 +31,6 @@ class Navbar extends Component {
           background: '#4169E1'
         }}
       >favorites</NavLink>
-      </div>
-    )
-  }
-}
+  </div>
 
 export default Navbar;
