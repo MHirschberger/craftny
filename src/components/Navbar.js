@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom';
 const link = {
   width: '100px',
   padding: '12px',
-  margin: '0 6px 6px',
-  background: '#191970',
-  textDecoration: '#191970',
-  color: 'black',
+  height: '50px',
+  // margin: '0 6px 6px',
+  background: 'white',
+  textDecoration: 'white',
+  color: '#57a2e4',
+  size: '16px'
 }
 
 const Navbar = props => 
@@ -19,7 +21,8 @@ const Navbar = props =>
         exact
         style={link}
         activeStyle={{
-          background: '#4169E1'
+          background: '#57a2e4',
+          color: 'white'
         }}
       >/r/analog</NavLink>
       <NavLink
@@ -28,7 +31,8 @@ const Navbar = props =>
         exact
         style={link}
         activeStyle={{
-          background: '#4169E1'
+          background: '#57a2e4',
+          color: 'white'
         }}
       >favorites</NavLink>
   </div>

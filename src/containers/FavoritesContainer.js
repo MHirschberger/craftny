@@ -1,39 +1,28 @@
 import React, { Component } from 'react';
-import Posts from '../components/Posts';
-//import { connect } from 'react-redux';
+import Favorites from '../components/Favorites';
+import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
+import { withRouter } from 'react-router';
 
 class FavoritesContainer extends Component {
-
-  state = {
-    posts: []
-  }
-
-  fetchPosts = () => {
-    fetch('https://www.reddit.com/r/analog/top/.json')
-      .then(response => response.json())
-      .then(discussions => console.log(discussions))
-  }
-
-  componentDidMount() {
-    this.fetchPosts()
-  }
 
   render() {
     return (
       <div>
-        {this.state.posts.length > 0 ? <Posts posts={this.state.posts} /> : null}
+        {this.props.favorites.length > 0 ? <Favorites favorites={this.props.favorites} /> : 'You Currently Have No Favorites'}
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-    posts: state.posts
+    favorites: state.favorites
 })
 
-const mapDispatchToProps = dispatch => ({
-  fetchPosts: () => dispatch(fetchPosts())
-})
+const mapDispatchToProps = dispatch =>  {
+  return {
+    fetchPosts: () => dispatch(fetchPosts())
+  }
+}
 
-export default FavoritesContainer;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FavoritesContainer));

@@ -23,8 +23,10 @@ const mapStateToProps = state => ({
     posts: state.posts
 })
 
-const mapDispatchToProps = dispatch => ({
-  fetchPosts: () => dispatch(fetchPosts())
-})
+const mapDispatchToProps = dispatch =>  {
+  return {
+    fetchPosts: () => dispatch(fetchPosts())
+  }
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostsContainer));

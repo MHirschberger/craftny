@@ -8,15 +8,21 @@ export const fetchPosts = () => {
         dispatch({ type: 'LOADING_POSTS' });
         return fetch('https://www.reddit.com/r/analog/top/.json')
             .then(response => response.json())
-            .then(posts => console.log(posts.data.children))
-            //.then(posts => dispatch({type: 'FETCH_POSTS', payload: posts }))
+            .then(posts => dispatch({type: 'FETCH_POSTS', payload: posts.data.children }))
     }
 };
 
 export const addFavorite = postId => {
     return {
         type: 'ADD_FAVORITE',
-        newFavorite: postId
+        newFav: postId
+    }
+}
+
+export const deleteFavorite = postId => {
+    return {
+        type: 'DELETE_FAVORITE',
+        deletedFav: postId
     }
 }
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { addFavorite } from '../actions/postActions'
+import { deleteFavorite } from '../actions/postActions'
 
 
-class Post extends Component {
+class Favorite extends Component {
 
-  addFavorite = postId => {
-    this.props.addFavorite(postId)
+  deleteFavorite = postId => {
+    this.props.deleteFavorite(postId)
   }
 
   render() {
@@ -21,7 +21,7 @@ class Post extends Component {
             <div className='other-text'>
               <p>/u/{data.author_fullname}</p>
             </div>
-        <button className='make-favorite' onClick={() => this.addFavorite(data.id)}> Make Favorite </button>
+        <button className='delete-favorite' onClick={() => this.deleteFavorite(data.id)}>Delete Favorite</button>
       </div>
     );
   }
@@ -29,8 +29,8 @@ class Post extends Component {
 
 const mapDispatchToProps = dispatch =>  {
   return {
-    addFavorite: postId => dispatch(addFavorite(postId))
+    deleteFavorite: postId => dispatch(deleteFavorite(postId))
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Post));
+export default withRouter(connect(null, mapDispatchToProps)(Favorite));
