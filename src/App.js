@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Navbar /> 
+          <Navbar favs={this.props.numFavorites}/> 
         </header>
         <div className="App-body">
           <Route exact path="/" component={PostsContainer} />

@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+
 
 const link = {
   width: '100px',
@@ -12,29 +15,38 @@ const link = {
   size: '16px'
 }
 
-const Navbar = props => 
+class Navbar extends Component {
+  render() {
+    return (
+      <div>
+        <NavLink
+          className='navbar'
+          to="/"
+          exact
+          style={link}
+          activeStyle={{
+            background: '#57a2e4',
+            color: 'white'
+          }}
+        >/r/analog</NavLink>
+        <NavLink
+          className='navbar'
+          to="/favorites"
+          exact
+          style={link}
+          activeStyle={{
+            background: '#57a2e4',
+            color: 'white'
+          }}
+        >favorites ({this.props.numFavs})</NavLink>
+      </div>
 
-  <div>
-      <NavLink
-        className='navbar'
-        to="/"
-        exact
-        style={link}
-        activeStyle={{
-          background: '#57a2e4',
-          color: 'white'
-        }}
-      >/r/analog</NavLink>
-      <NavLink
-        className='navbar'
-        to="/favorites"
-        exact
-        style={link}
-        activeStyle={{
-          background: '#57a2e4',
-          color: 'white'
-        }}
-      >favorites</NavLink>
-  </div>
+    )
+  }
+}
 
-export default Navbar;
+const mapStateToProps = state => ({
+  numFavs: state.favorites.length
+})
+
+export default withRouter(connect(mapStateToProps)(Navbar));
